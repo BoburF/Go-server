@@ -84,8 +84,8 @@ func GetTransactionsByWeek(c *fiber.Ctx) error {
 	}
 
 	now := time.Now()
-	lastWeekStart := now.AddDate(0, 0, -int(now.Weekday())+(weekNumber-1)*7).Truncate(24 * time.Hour)
-	lastWeekEnd := now.AddDate(0, 0, -int(now.Weekday())+(weekNumber-1)*7+6).Truncate(24 * time.Hour).Add(time.Hour*23 + time.Minute*59 + time.Second*59)
+	lastWeekStart := now.AddDate(0, 0, -int(now.Weekday())-(weekNumber-1)*7).Truncate(24 * time.Hour)
+	lastWeekEnd := now.AddDate(0, 0, -int(now.Weekday())-(weekNumber-1)*7+6).Truncate(24 * time.Hour).Add(time.Hour*23 + time.Minute*59 + time.Second*59)
 
 	pipeline := []bson.M{
 		{
